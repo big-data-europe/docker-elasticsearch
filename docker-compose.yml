@@ -1,0 +1,19 @@
+version: '2'
+services:
+  elasticsearch:
+    image: elasticsearch:2.3
+    command: elasticsearch -Des.network.host=0.0.0.0
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+  elasticsearch-mapping-init:
+    environment:
+      - file_url=https://raw.githubusercontent.com/big-data-europe/pilot-sc4-flink-kafka-consumer/master/elasticsearch_fcd_mapping.json
+      - index_name=thessaloniki
+      - mappings_name=floating-cars
+    build:
+      context: .
+    links:
+      - elasticsearch
+    depends_on:
+      - elasticsearch
