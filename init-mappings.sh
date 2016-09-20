@@ -3,7 +3,8 @@
 INDEXNAME=$index_name
 MAPPINGSNAME=$mappings_name
 
-echo $mappings_name
+/wait-for-step.sh
+/execute-step.sh
 
 wget $file_url
 
@@ -17,3 +18,5 @@ for i in {30..0}; do
     fi
     sleep 2
 done
+
+/finish-step.sh
