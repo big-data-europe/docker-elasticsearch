@@ -58,4 +58,4 @@ If it returns a JSON object, something starting with:
 
     
     
-
+**Note:** this installs a single-node Elasticsearch instance.
